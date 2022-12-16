@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Adoptions: Undergoing</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="/css/menuStyle.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Navigation -->
+
+<header>
+    <nav class="pt-2">
+        <div class="container-fluid pb-5">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li><a id="len1" class="hoverable index-color" href="/"><h6 th:text="${appTitle}"></h6></a></li>
+                    <li><a id="len4" class="hoverable titlecolor"><h1
+                            th:text="${pageInfo.getPageTitle()}"></h1></a></li>
+                </ul>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><span class="nav-item" th:each="page:${shelterPages}"><span style="opacity:0;">invis</span>
+                     <a class="hoverable nav-color" th:href="${page.getPageUrl()}" th:text="${page.getPageTitle()}"></a>
+                    </span></li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li><span class="nav-item" th:each="page:${animalButtons}"><span
+                        style="opacity:0;"> invis</span>
+                        <a class="hoverable animal-color" th:href="${page.getPageUrl()}"
+                           th:text="${page.getPageTitle()}"></a>
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<main>
+
+
+    <!--Confirmation form-->
+
+
+    <section>
+        <div th:if="${status == 'animal_to_adopt_found'}">
+            <i class="bi-exclamation-octagon-fill"></i>
+            <h4 style="color:red">
+                <strong> Warning!</strong><br>
+                You are now finalizing adoption process.</h4>
+            <div class="py-3">
+                <img th:src="${animal.getPictureUrl()}" height="200" width="200"
+                     alt="${animal.getName()}">
+            </div>
+
+            <form method="post" th:action="'/shelter/undergoingadoptions/confirm?animalId='+ ${animal.getId()}">
+                <div class="py-4">
+                    <label>
+                        Additional information to adopter:
+                    </label>
+                    <div class="py-4">
+                        <textarea name="sheltersText" id="sheltersText" rows="4" cols="100" required> </textarea>
+                    </div>
+                    <button type="submit" class="btn btn-danger">Approve adoption!</button>
+                    <a href="/shelter/undergoingadoptions?status=animal_adoption_canceled" class="btn btn-light">Cancel
+                    </a>
+                </div>
+            </form>
+            <section class="pb-5">
+                <div class="container pt-3">
+                    <div class="row">
+                        <div class="col-sm">
+                            <h4>General information about adoption </h4>
+                            <div class="pb-4"><p class="specialcolor">ID:</p><h5
+                                    th:text="${adoption.getId()}"></h5></div>
+                            <div class="pb-4"><p class="specialcolor">Application received: </p><h5
+                                    th:text="${adoption.getSent()}"></h5></div>
+                            <div class="pb-4"><p class="specialcolor">Information from adopter: </p><h5
+                                    th:text="${adoption.getAdoptersText()}"></h5></div>
+                        </div>
+                        <div class="col-sm">
+                            <h4>General information about adopter </h4>
+                            <div class="pb-4"><p class="specialcolor">Name: </p><h5
+                                    th:text="${adoption.getAdopterId().getName()}"></h5></div>
+                            <div class="pb-4"><p class="specialcolor">Age: </p><h5
+                                    th:text="${adoption.getAdopterId().getAge()}"></h5></div>
+                            <div class="pb-4"><p class="specialcolor">Phone: </p><h5
+                                    th:text="${adoption.getAdopterId().getPhone()}"></h5></div>
+                            <div class="pb-4"><p class="specialcolor">Email: </p><h5
+                                    th:text="${adoption.getAdopterId().getEmail()}"></h5></div>
+                        </div>
+                        <div class="col-sm">
+                            <h4>General information about animal </h4>
+                            <div class="pb-4"><p class="specialcolor">Name: </p><h5 th:text="${animal.getName()}"></h5>
+                            </div>
+                            <div class="pb-4"><p class="specialcolor">Type: </p><h5 th:text="${animal.getType()}"></h5>
+                            </div>
+                            <div class="pb-4"><p class="specialcolor">Age group: <h5
+                                    th:text="${animal.getAgeGroup()}"></h5></div>
+                            <div><p class="specialcolor">Info: <h5 th:text="${animal.getInfo()}"></h5></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+</main>
+<script src="/js/menuScript.js"></script>
+</body>
+</html>

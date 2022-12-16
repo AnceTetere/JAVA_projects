@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sheltered Animals | Adopter: Profile </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="/css/menuStyle.css" rel="stylesheet">
+
+</head>
+<body>
+
+<!--Navigation-->
+
+<header>
+    <div class="container-fluid pb-5">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li><a id="len1" class="hoverable index-color" href="/"><h6 th:text="${appTitle}"></h6></a></li>
+                    <li><a id="len4" class="hoverable titlecolor"><h1
+                            th:text="${pageInfo.getPageTitle}"></h1></a></li>
+                    <li><span class="nav-item" th:each="page:${adopterPages}"><span style="opacity:0;"> invisible</span>
+                     <a class="hoverable animal-color" th:href="${page.getPageUrl()}" th:text="${page.getPageTitle()}"></a>
+                   </span></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+
+
+<main>
+    <section th:if="${undergoingAdoptionList.empty}">
+        <h5> You don't have any finished adoptions!</h5>
+    </section>
+    <section th:unless="${undergoingAdoptionList.empty}">
+        <table class="center">
+            <thead>
+            <tr>
+                <th>Registration date</th>
+                <th>ID</th>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Info</th>
+                <th>Shelter</th>
+                <th>Email</th>
+                <th>Your submission to the shelter</th>
+                <th>Shelters answer</th>
+                <th>Approval date</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="adoption : ${undergoingAdoptionList}">
+                <td><span th:text="${adoption.getSent()}"> </span></td>
+                <td><span th:text="${adoption.getId()}"> </span></td>
+                <td><img th:src="${adoption.getAnimalId().getPictureUrl()}" height="100" width="100"
+                         alt="${animal.getName()}"></td>
+                <td><span th:text="${adoption.getAnimalId().getName()}"> </span></td>
+                <td><span th:text="${adoption.getAnimalId().getInfo()}"> </span></td>
+                <td><span th:text="${adoption.getAnimalId().getShelter().getName()}"> </span></td>
+                <td><span th:text="${adoption.getAnimalId().getShelter().getEmail()}"> </span></td>
+                <td><span th:text="${adoption.getAdoptersText()}"> </span></td>
+                <td><span th:text="${adoption.getSheltersText()}"> </span></td>
+                <td><span th:text="${adoption.getProcessed()}"> </span></td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
+<script src="/js/menuScript.js"></script>
+</body>
+</html>
