@@ -22,11 +22,11 @@ public class AttestingPersonalInfo {
                 age = checkData(currentYear, scanner.nextLine());
                 validDOB = age < 0 ? false : true;
             } catch (NumberFormatException badUserData) {
-                System.out.println("Letters not allowed. Please, try again.");
+                System.out.println("Characters not allowed. Please, try again.");
             }
         } while (!validDOB);
 
-        return "You are " + age + " years old";
+        return "You are " + age + " years old.";
     }
 
     public static int checkData(int currentYear, String dateOfBirth) {
@@ -39,4 +39,3 @@ public class AttestingPersonalInfo {
         return (currentYear - dob);
     }
 }
-
