@@ -6,7 +6,6 @@ public class AssessmentOfInput {
     Scanner scanner = new Scanner(System.in);
 
     public void inputAssessment1() {
-
         int counter = 1;
         int sum = 0;
 
