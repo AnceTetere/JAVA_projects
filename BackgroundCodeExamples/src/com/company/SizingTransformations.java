@@ -21,6 +21,8 @@ public class SizingTransformations {
         double feet = (int) inches / 12;
         double remainingInches = (int) inches % 12;
         System.out.println(inches + " inches is equal to " + feet + " feet " + remainingInches + " inches");
+        System.out.println();
         return calcFeetAndInchesToCentimeters(feet, remainingInches);
+
     }
 }

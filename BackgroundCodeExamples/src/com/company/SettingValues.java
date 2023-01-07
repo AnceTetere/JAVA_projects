@@ -9,6 +9,7 @@ public class SettingValues {
         System.out.println("=====================");
         for (int number = 1; number < 5; number += 2) {
             System.out.println("number = " + number);
+            System.out.println();
         }
 
         System.out.println("=====================");

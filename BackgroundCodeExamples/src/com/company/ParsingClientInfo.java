@@ -5,6 +5,7 @@ public class ParsingClientInfo {
         String numberAsString = "2018.125";
         System.out.println("String number equals " + numberAsString);
         System.out.println("(String number + 1) equals " + (numberAsString + 1));
+        System.out.println();
 
         double number = Double.parseDouble(numberAsString);
         System.out.println("Parsed number equals to " + number);

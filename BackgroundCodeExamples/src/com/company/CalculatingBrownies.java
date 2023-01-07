@@ -8,6 +8,7 @@ public class CalculatingBrownies {
 
     public static int calculateBrowniePoints(int points) {
         System.out.println("Unnamed client has received " + points + " points");
+        System.out.println();
         return points * 1000;
     }
 

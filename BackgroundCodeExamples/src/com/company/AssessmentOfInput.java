@@ -46,7 +46,6 @@ public class AssessmentOfInput {
                 break;
             }
         }
-
         if (loopCount > 0) {
             System.out.println("min = " + min + ", max = " + max);
         } else {

@@ -7,7 +7,6 @@ public class AttestingPersonalInfo {
     public static String getInputFromScanner(int currentYear) {
 
         Scanner scanner = new Scanner(System.in);
-
         System.out.println("Hi, what's your name? ");
         String name = scanner.nextLine();
 

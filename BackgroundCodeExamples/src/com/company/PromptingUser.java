@@ -20,6 +20,7 @@ public class PromptingUser {
                 sum += number;
             } catch (NumberFormatException nfe) {
                 System.out.println("Invalid number");
+                System.out.println();
             }
 
         }
